@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Kart | Cute Accessories, Combos &amp; Craft Sets</title>
+<meta name="description" content="Shop trendy earrings, fashion accessories, combo sets, art & craft kits and cute keychains at E-Kart.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   E-KART — design tokens
+   Palette: blush cream base, deep plum ink, berry-rose accent,
+   warm gold for savings/badges. Fraunces (display) + Manrope (UI).
+   ========================================================== */
+:root{
+  --bg:#FBF6F8;
+  --surface:#FFFFFF;
+  --ink:#241922;
+  --ink-soft:rgba(36,25,34,0.66);
+  --ink-faint:rgba(36,25,34,0.45);
+  --accent:#C2477A;
+  --accent-deep:#9C3161;
+  --accent-tint:#FCE9F0;
+  --gold:#E2A233;
+  --line:rgba(36,25,34,0.10);
+  --glass:rgba(255,255,255,0.6);
+  --shadow-soft:0 20px 45px rgba(93,32,58,0.10);
+  --shadow-lift:0 26px 60px rgba(93,32,58,0.16);
+  --radius-lg:22px;
+  --radius-md:16px;
+  --radius-sm:10px;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Manrope', sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Fraunces', serif;}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer;}
+ul{list-style:none;}
+:focus-visible{outline:2px solid var(--accent-deep); outline-offset:2px;}
+
+.container{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+/* ---------------- Navbar ---------------- */
+.navbar{
+  position:sticky; top:0; z-index:80;
+  background:var(--glass); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-row{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1180px; margin:0 auto;}
+.logo{font-family:'Fraunces',serif; font-weight:600; font-size:1.5rem; letter-spacing:-0.01em;}
+.nav-links{display:flex; gap:28px; font-size:0.92rem; font-weight:500;}
+.nav-links a{opacity:0.72; transition:opacity .15s;}
+.nav-links a:hover{opacity:1;}
+.nav-actions{display:flex; align-items:center; gap:16px;}
+.icon-btn{background:none; border:none; color:var(--ink); position:relative; display:flex;}
+.icon-btn svg{width:22px; height:22px;}
+.cart-count{
+  position:absolute; top:-7px; right:-8px; background:var(--accent); color:#fff;
+  font-size:0.65rem; font-weight:700; width:18px; height:18px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.search-box{
+  display:flex; align-items:center; gap:8px; background:var(--surface); border:1px solid var(--line);
+  border-radius:999px; padding:8px 16px; width:220px;
+}
+.search-box input{border:none; outline:none; background:none; font-size:0.88rem; width:100%; font-family:inherit;}
+.search-box svg{width:16px; height:16px; opacity:0.5; flex-shrink:0;}
+.hamburger{display:none; background:none; border:none;}
+.hamburger svg{width:24px; height:24px;}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .search-box{display:none;}
+  .hamburger{display:flex;}
+}
+
+/* ---------------- Hero ---------------- */
+.hero{padding:64px 24px 40px;}
+.hero-grid{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+.hero h1{font-size:clamp(2.4rem,5vw,3.6rem); line-height:1.1; font-weight:600;}
+.hero .lead{margin-top:18px; max-width:440px; color:var(--ink-soft); font-size:1.06rem;}
+.hero-cta{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:999px;
+  font-weight:600; font-size:0.94rem; border:none; transition:transform .15s, box-shadow .15s;
+}
+.btn-primary{background:var(--accent); color:#fff; box-shadow:0 12px 26px rgba(194,71,122,0.32);}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 16px 32px rgba(194,71,122,0.4);}
+.btn-outline{background:transparent; border:1.5px solid var(--line); color:var(--ink);}
+.btn-outline:hover{border-color:var(--accent); color:var(--accent-deep);}
+.btn-block{width:100%; justify-content:center;}
+
+.hero-visual{position:relative; height:420px;}
+.floating-card{
+  position:absolute; background:var(--surface); border-radius:var(--radius-md);
+  box-shadow:var(--shadow-lift); padding:14px; width:180px;
+}
+.floating-card img{border-radius:var(--radius-sm); aspect-ratio:1/1; object-fit:cover; margin-bottom:10px;}
+.floating-card .fc-name{font-size:0.82rem; font-weight:600;}
+.floating-card .fc-price{font-size:0.82rem; color:var(--accent-deep); font-weight:700; margin-top:2px;}
+.fc-1{top:10px; left:60px; transform:rotate(-6deg); z-index:2;}
+.fc-2{top:120px; right:20px; transform:rotate(5deg); z-index:3;}
+.fc-3{bottom:10px; left:110px; transform:rotate(3deg); z-index:1; width:160px;}
+@keyframes floatIn{from{opacity:0; transform:translateY(24px) rotate(var(--r,0deg));} to{opacity:1; transform:translateY(0) rotate(var(--r,0deg));}}
+.floating-card{animation:floatIn .7s ease both;}
+.fc-1{animation-delay:.05s;} .fc-2{animation-delay:.2s;} .fc-3{animation-delay:.35s;}
+
+@media(max-width:860px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{height:300px; margin-top:20px;}
+}
+
+/* ---------------- Sections ---------------- */
+section{padding:64px 24px;}
+.section-head{max-width:560px; margin-bottom:36px;}
+.section-head .eyebrow{color:var(--accent-deep); font-weight:600; font-size:0.85rem; margin-bottom:6px; display:block;}
+.section-head h2{font-size:clamp(1.7rem,3.6vw,2.3rem); font-weight:600;}
+.section-head p{margin-top:10px; color:var(--ink-soft);}
+
+/* ---------------- Category bento grid ---------------- */
+.cat-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:170px; gap:18px;
+}
+.cat-card{
+  position:relative; border-radius:var(--radius-lg); overflow:hidden; padding:22px;
+  display:flex; flex-direction:column; justify-content:flex-end; color:#fff;
+  transition:transform .2s, box-shadow .2s; box-shadow:var(--shadow-soft);
+}
+.cat-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-lift);}
+.cat-card::before{content:''; position:absolute; inset:0; opacity:0.92;}
+.cat-card .cat-emoji{font-size:1.6rem; margin-bottom:8px; position:relative;}
+.cat-card h3{position:relative; font-size:1.2rem; font-weight:600;}
+.cat-card p{position:relative; font-size:0.82rem; color:rgba(255,255,255,0.85); margin-top:4px; max-width:220px;}
+.cat-card .cat-link{position:relative; margin-top:12px; font-size:0.82rem; font-weight:700; display:inline-flex; align-items:center; gap:4px;}
+.cat-earrings{grid-column:span 2; grid-row:span 2;}
+.cat-earrings::before{background:linear-gradient(135deg,#C2477A,#7C2B54);}
+.cat-accessories::before{background:linear-gradient(135deg,#8A5FC2,#5B3B94);}
+.cat-combos{grid-column:span 2;}
+.cat-combos::before{background:linear-gradient(135deg,#E2A233,#B9791C);}
+.cat-craft::before{background:linear-gradient(135deg,#3F9C87,#276E5D);}
+.cat-keychains::before{background:linear-gradient(135deg,#4E7FC2,#325C94);}
+@media(max-width:900px){
+  .cat-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+  .cat-earrings{grid-column:span 2; grid-row:span 1;}
+  .cat-combos{grid-column:span 2;}
+}
+
+/* ---------------- Product grid ---------------- */
+.shop-controls{
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  margin-bottom:26px; padding-bottom:18px; border-bottom:1px solid var(--line);
+}
+.chip-row{display:flex; gap:10px; flex-wrap:wrap;}
+.chip{
+  padding:9px 18px; border-radius:999px; border:1px solid var(--line); background:var(--surface);
+  font-size:0.85rem; font-weight:600; color:var(--ink-soft); transition:.15s;
+}
+.chip.active, .chip:hover{border-color:var(--accent); color:var(--accent-deep); background:var(--accent-tint);}
+.sort-select{
+  border:1px solid var(--line); border-radius:999px; padding:9px 16px; background:var(--surface);
+  font-size:0.85rem; font-family:inherit; color:var(--ink);
+}
+
+.product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+@media(max-width:980px){.product-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:720px){.product-grid{grid-template-columns:repeat(2,1fr); gap:14px;}}
+
+.product-card{
+  background:var(--surface); border-radius:var(--radius-md); overflow:hidden;
+  box-shadow:var(--shadow-soft); transition:transform .18s, box-shadow .18s; display:flex; flex-direction:column;
+}
+.product-card:hover{transform:translateY(-5px); box-shadow:var(--shadow-lift);}
+.product-media{position:relative; aspect-ratio:1/1; background:var(--accent-tint); cursor:pointer;}
+.product-media img{width:100%; height:100%; object-fit:cover;}
+.badge-discount{
+  position:absolute; top:10px; left:10px; background:var(--gold); color:#fff; font-size:0.72rem;
+  font-weight:700; padding:4px 9px; border-radius:999px;
+}
+.badge-soldout{
+  position:absolute; inset:0; background:rgba(36,25,34,0.55); color:#fff; display:flex;
+  align-items:center; justify-content:center; font-weight:700; font-size:0.9rem;
+}
+.product-info{padding:16px; display:flex; flex-direction:column; gap:6px; flex:1;}
+.product-info h3{font-size:0.98rem; font-weight:600; font-family:'Manrope',sans-serif; cursor:pointer;}
+.product-info .desc{font-size:0.8rem; color:var(--ink-faint); flex:1;}
+.price-row{display:flex; align-items:baseline; gap:8px;}
+.price-now{font-weight:700; font-size:1.05rem; color:var(--accent-deep);}
+.price-old{font-size:0.85rem; color:var(--ink-faint); text-decoration:line-through;}
+.product-actions{display:flex; gap:8px; margin-top:6px;}
+.product-actions .btn{padding:9px 0; font-size:0.82rem; flex:1;}
+
+.combo-save{
+  position:absolute; top:10px; right:10px; background:var(--accent-deep); color:#fff; font-size:0.72rem;
+  font-weight:700; padding:4px 9px; border-radius:999px;
+}
+
+/* ---------------- Trust section ---------------- */
+.trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+.trust-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius-md); padding:26px 22px;}
+.trust-card .t-icon{width:38px; height:38px; color:var(--accent-deep); margin-bottom:14px;}
+.trust-card h3{font-size:1rem; font-weight:700; font-family:'Manrope',sans-serif; margin-bottom:6px;}
+.trust-card p{font-size:0.86rem; color:var(--ink-soft);}
+@media(max-width:900px){.trust-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.trust-grid{grid-template-columns:1fr;}}
+
+/* ---------------- About ---------------- */
+.about-band{background:var(--accent-tint);}
+.about-inner{max-width:720px; margin:0 auto; text-align:center;}
+.about-inner h2{font-size:clamp(1.6rem,3.4vw,2.1rem);}
+.about-inner p{margin-top:16px; color:var(--ink-soft); font-size:1.02rem;}
+
+/* ---------------- Footer ---------------- */
+footer{background:var(--ink); color:rgba(255,255,255,0.88); padding:60px 24px 26px;}
+.footer-grid{
+  max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:36px;
+  padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,0.14);
+}
+.footer-grid h3{font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.5); margin-bottom:14px; font-weight:700; font-family:'Manrope',sans-serif;}
+.footer-brand{font-family:'Fraunces',serif; font-size:1.35rem; margin-bottom:8px;}
+.footer-tagline{color:rgba(255,255,255,0.6); font-size:0.88rem;}
+.footer-grid a, .footer-grid p{display:block; font-size:0.88rem; color:rgba(255,255,255,0.72); margin-bottom:9px;}
+.footer-grid a:hover{color:#fff;}
+.footer-bottom{
+  max-width:1180px; margin:0 auto; padding-top:20px; display:flex; justify-content:space-between;
+  flex-wrap:wrap; gap:10px; font-size:0.78rem; color:rgba(255,255,255,0.4);
+}
+@media(max-width:820px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr;}}
+
+/* ---------------- WhatsApp float ---------------- */
+.whatsapp-float{
+  position:fixed; bottom:22px; right:22px; z-index:90; background:#25D366; color:#fff;
+  width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 24px rgba(0,0,0,0.25); font-size:1.5rem; transition:transform .15s;
+}
+.whatsapp-float:hover{transform:scale(1.08);}
+.whatsapp-float svg{width:28px; height:28px;}
+
+/* ---------------- Cart drawer ---------------- */
+.overlay{
+  position:fixed; inset:0; background:rgba(36,25,34,0.4); z-index:95; opacity:0; pointer-events:none;
+  transition:opacity .2s;
+}
+.overlay.show{opacity:1; pointer-events:auto;}
+.drawer{
+  position:fixed; top:0; right:0; height:100%; width:400px; max-width:92vw; background:var(--surface);
+  z-index:100; transform:translateX(100%); transition:transform .25s ease; display:flex; flex-direction:column;
+  box-shadow:-20px 0 50px rgba(36,25,34,0.2);
+}
+.drawer.show{transform:translateX(0);}
+.drawer-head{display:flex; align-items:center; justify-content:space-between; padding:20px 22px; border-bottom:1px solid var(--line);}
+.drawer-head h3{font-family:'Fraunces',serif; font-size:1.2rem;}
+.drawer-close{background:none; border:none;}
+.drawer-close svg{width:22px; height:22px;}
+.drawer-body{flex:1; overflow-y:auto; padding:18px 22px;}
+.cart-empty{color:var(--ink-faint); font-size:0.92rem; text-align:center; margin-top:40px;}
+.cart-item{display:flex; gap:12px; padding:14px 0; border-bottom:1px solid var(--line);}
+.cart-item img{width:64px; height:64px; border-radius:10px; object-fit:cover; flex-shrink:0;}
+.cart-item-info{flex:1;}
+.cart-item-info h4{font-size:0.9rem; font-weight:600;}
+.cart-item-info .price-row{margin-top:4px;}
+.qty-control{display:flex; align-items:center; gap:10px; margin-top:8px;}
+.qty-control button{width:26px; height:26px; border-radius:50%; border:1px solid var(--line); background:var(--surface); font-weight:700;}
+.qty-control span{font-size:0.9rem; font-weight:600; min-width:16px; text-align:center;}
+.remove-link{font-size:0.78rem; color:var(--accent-deep); font-weight:600; margin-top:8px; background:none; border:none;}
+.drawer-footer{padding:20px 22px; border-top:1px solid var(--line);}
+.summary-row{display:flex; justify-content:space-between; font-size:0.88rem; color:var(--ink-soft); margin-bottom:8px;}
+.summary-row.total{font-size:1.05rem; font-weight:700; color:var(--ink); margin-top:10px;}
+
+/* ---------------- Modal (product / checkout / confirm) ---------------- */
+.modal{
+  position:fixed; inset:0; z-index:110; display:flex; align-items:center; justify-content:center;
+  padding:20px; opacity:0; pointer-events:none; transition:opacity .2s;
+}
+.modal.show{opacity:1; pointer-events:auto;}
+.modal-backdrop{position:absolute; inset:0; background:rgba(36,25,34,0.5);}
+.modal-box{
+  position:relative; background:var(--surface); border-radius:var(--radius-lg); max-width:640px; width:100%;
+  max-height:88vh; overflow-y:auto; box-shadow:var(--shadow-lift); transform:translateY(16px); transition:transform .2s;
+}
+.modal.show .modal-box{transform:translateY(0);}
+.modal-close{position:absolute; top:16px; right:16px; background:var(--surface); border:1px solid var(--line); border-radius:50%; width:34px; height:34px; z-index:2;}
+.modal-close svg{width:18px; height:18px;}
+
+.pd-grid{display:grid; grid-template-columns:1fr 1fr;}
+.pd-image{aspect-ratio:1/1; background:var(--accent-tint);}
+.pd-image img{width:100%; height:100%; object-fit:cover;}
+.pd-info{padding:28px;}
+.pd-info h2{font-size:1.4rem; margin-bottom:8px;}
+.pd-info .desc{color:var(--ink-soft); font-size:0.92rem; margin:10px 0 16px;}
+.pd-avail{font-size:0.82rem; font-weight:600; margin-bottom:16px;}
+.pd-avail.in{color:#2E7D5B;}
+.pd-avail.out{color:var(--accent-deep);}
+.pd-trust{display:flex; gap:14px; margin-top:18px; flex-wrap:wrap;}
+.pd-trust span{font-size:0.75rem; color:var(--ink-faint); display:flex; align-items:center; gap:5px;}
+@media(max-width:640px){.pd-grid{grid-template-columns:1fr;}}
+
+.form-grid{padding:28px; display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+.form-grid h2{grid-column:1/-1; font-size:1.3rem; margin-bottom:4px;}
+.form-field{display:flex; flex-direction:column; gap:6px; font-size:0.85rem; font-weight:600; color:var(--ink-soft);}
+.form-field.full{grid-column:1/-1;}
+.form-field input, .form-field textarea{
+  border:1px solid var(--line); border-radius:var(--radius-sm); padding:11px 14px; font-family:inherit;
+  font-size:0.92rem; color:var(--ink); background:var(--bg);
+}
+.form-field textarea{resize:vertical; min-height:70px;}
+.order-summary{
+  grid-column:1/-1; background:var(--accent-tint); border-radius:var(--radius-md); padding:16px 18px; margin-top:4px;
+}
+.order-summary .summary-row{font-size:0.88rem;}
+.pay-note{grid-column:1/-1; font-size:0.8rem; color:var(--ink-faint); background:var(--bg); border:1px dashed var(--line); border-radius:var(--radius-sm); padding:12px 14px;}
+.form-grid .btn{grid-column:1/-1;}
+
+.confirm-box{padding:40px 32px; text-align:center;}
+.confirm-emoji{font-size:2.6rem; margin-bottom:12px;}
+.confirm-box h2{font-size:1.5rem; margin-bottom:8px;}
+.confirm-box p{color:var(--ink-soft); font-size:0.92rem;}
+.confirm-details{
+  text-align:left; background:var(--bg); border-radius:var(--radius-md); padding:18px 20px; margin:20px 0;
+}
+.confirm-details .summary-row{font-size:0.9rem;}
+.confirm-actions{display:flex; gap:12px; flex-wrap:wrap;}
+.confirm-actions .btn{flex:1;}
+
+.toast{
+  position:fixed; bottom:90px; right:22px; background:var(--ink); color:#fff; padding:12px 20px;
+  border-radius:999px; font-size:0.86rem; font-weight:600; z-index:120; opacity:0; transform:translateY(10px);
+  transition:opacity .2s, transform .2s; pointer-events:none;
+}
+.toast.show{opacity:1; transform:translateY(0);}
+
+@media(max-width:520px){
+  .form-grid{grid-template-columns:1fr;}
+  .form-field{grid-column:1/-1;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-row">
+    <a href="#home" class="logo">E-Kart</a>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#" data-cat="earrings" class="nav-cat-link">Earrings</a>
+      <a href="#" data-cat="accessories" class="nav-cat-link">Accessories</a>
+      <a href="#" data-cat="combos" class="nav-cat-link">Combos</a>
+      <a href="#" data-cat="craft" class="nav-cat-link">Craft Sets</a>
+      <a href="#" data-cat="keychains" class="nav-cat-link">Keychains</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="searchInput" type="text" placeholder="Search products...">
+      </div>
+      <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1>Cute finds. Beautiful choices.</h1>
+        <p class="lead">Discover trendy accessories, creative craft sets, stylish combos and little things that make every day better.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary" data-cat="earrings" data-scroll="shop">Shop now</a>
+          <a href="#" class="btn btn-outline" data-cat="combos" data-scroll="shop">Explore combos</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card fc-1">
+          <img src="https://placehold.co/300x300/f4c9d6/2b1f2e?text=Earrings" alt="">
+          <div class="fc-name">Pearl Drop Earrings</div>
+          <div class="fc-price">₹199</div>
+        </div>
+        <div class="floating-card fc-2">
+          <img src="https://placehold.co/300x300/ffe3b3/2b1f2e?text=Combo" alt="">
+          <div class="fc-name">College Girl Combo</div>
+          <div class="fc-price">₹399</div>
+        </div>
+        <div class="floating-card fc-3">
+          <img src="https://placehold.co/300x300/c9e4de/2b1f2e?text=Craft+Kit" alt="">
+          <div class="fc-name">Resin Art Kit</div>
+          <div class="fc-price">₹449</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Browse</span>
+        <h2>Everything your everyday needs</h2>
+        <p>Five little worlds to shop from — pick what fits your mood.</p>
+      </div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Shop</span>
+        <h2 id="shopTitle">All products</h2>
+      </div>
+      <div class="shop-controls">
+        <div class="chip-row" id="chipRow"></div>
+        <select class="sort-select" id="sortSelect">
+          <option value="default">Sort: Popular</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+          <option value="newest">Newest</option>
+        </select>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section id="trust">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why E-Kart</span>
+        <h2>Why shop with E-Kart?</h2>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card">
+          <svg class="t-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+          <h3>Carefully selected</h3>
+          <p>Products are selected with attention to style and value.</p>
+        </div>
+        <div class="trust-card">
+          <svg class="t-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <h3>Affordable prices</h3>
+          <p>Trendy products at accessible prices.</p>
+        </div>
+        <div class="trust-card">
+          <svg class="t-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.4 8.5 8.5 0 0 1-4-1L3 20l1.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          <h3>Customer support</h3>
+          <p>Reach us easily through WhatsApp or email.</p>
+        </div>
+        <div class="trust-card">
+          <svg class="t-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <h3>Secure payments</h3>
+          <p>Payment options will be added and configured securely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-band" id="about">
+    <div class="container about-inner">
+      <span class="eyebrow">About E-Kart</span>
+      <h2>A small store, made with care.</h2>
+      <p>E-Kart is a small online store focused on bringing together affordable accessories, creative craft sets, cute combos and everyday little finds in one simple shopping experience.</p>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">E-Kart</div>
+      <p class="footer-tagline">Affordable finds, beautiful choices.</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <a href="#home">Home</a>
+      <a href="#" data-cat="earrings">Earrings</a>
+      <a href="#" data-cat="accessories">Accessories</a>
+      <a href="#" data-cat="combos">Combos</a>
+      <a href="#" data-cat="craft">Craft Sets</a>
+      <a href="#" data-cat="keychains">Keychains</a>
+      <a href="#about">About</a>
+    </div>
+    <div>
+      <h3>Customer Support</h3>
+      <a id="footerWhatsapp" href="#">WhatsApp</a>
+      <a id="footerEmail" href="#">Email</a>
+      <p>Shipping Information</p>
+      <p>Return Policy</p>
+      <p>Privacy Policy</p>
+    </div>
+    <div>
+      <h3>Follow Us &amp; Contact</h3>
+      <a id="footerInstagram" href="#" target="_blank">Instagram</a>
+      <p id="footerWhatsappNum"></p>
+      <p id="footerEmailText"></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 E-Kart</span>
+    <span>Cute Accessories, Combos &amp; Craft Sets</span>
+  </div>
+</footer>
+
+<a class="whatsapp-float" id="whatsappFloat" href="#" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A9 9 0 1 0 5 19l-1.3 3.7L7.6 21a9 9 0 0 0 10-14.7zm-5.6 13a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.8.9.9-2.7-.2-.3A7.4 7.4 0 1 1 12 19.3zm4-5.5c-.2-.1-1.3-.6-1.5-.7s-.4-.1-.5.1-.5.7-.6.8-.3.1-.5 0a6 6 0 0 1-1.8-1.1 6.7 6.7 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4a1.7 1.7 0 0 0 .2-.4.4.4 0 0 0 0-.4c-.1-.1-.5-1.2-.7-1.6s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2 4.7 4.7 0 0 0 1 2.5 10.8 10.8 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5a3.3 3.3 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.4-.3z"/></svg>
+</a>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer">
+  <div class="drawer-head">
+    <h3>Your cart</h3>
+    <button class="drawer-close" id="closeCart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-footer" id="cartFooter"></div>
+</aside>
+
+<!-- PRODUCT MODAL -->
+<div class="modal" id="productModal">
+  <div class="modal-backdrop" data-close="productModal"></div>
+  <div class="modal-box" id="productModalBox"></div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-backdrop" data-close="checkoutModal"></div>
+  <div class="modal-box" id="checkoutModalBox"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================
+// STORE CONFIG — edit these values freely
+// ============================================
+const storeConfig = {
+  storeName: "E-Kart",
+  tagline: "Affordable finds, beautiful choices.",
+  whatsappNumber: "919339567429", // country code + number, no + or spaces
+  email: "debrajghosh004@gmail.com",
+  instagram: "debraj___ghosh",
+  shippingFee: 50,
+  freeShippingAbove: 299
+};
+
+// ============================================
+// PAYMENT CONFIG — add your UPI ID here later
+// ============================================
+const paymentConfig = {
+  upiId: "",           // e.g. "yourname@okhdfcbank" — leave blank until ready
+  upiName: "E-Kart",
+  enabled: false        // set to true once upiId is filled in
+};
+
+
+// ============================================
+// CATEGORIES — edit name/description/emoji here
+// ============================================
+const categories = [
+  {
+    id: "earrings",
+    emoji: "💎",
+    name: "Earrings",
+    description: "Trendy earrings for everyday and special occasions."
+  },
+  {
+    id: "accessories",
+    emoji: "🎀",
+    name: "Accessories",
+    description: "Hair clips, bangles and other fashionable little essentials."
+  },
+  {
+    id: "combos",
+    emoji: "🎁",
+    name: "Combo Sets",
+    description: "Curated combinations at attractive prices."
+  },
+  {
+    id: "craft",
+    emoji: "🎨",
+    name: "Craft Sets",
+    description: "Fun and creative art & craft kits."
+  },
+  {
+    id: "keychains",
+    emoji: "🔑",
+    name: "Keychains",
+    description: "Cute and stylish keychains."
+  }
+];
+
+
+// ============================================================
+// PRODUCTS — this is the ONLY file you need to touch to:
+//   - add a new product        -> copy a block below, change the id
+//   - change a price           -> edit "price" / "oldPrice"
+//   - change a product image   -> edit "image" (paste your own photo URL,
+//                                  or a local path like "products/earring-1.jpg")
+//   - hide a sold-out product  -> set "available: false"
+//   - feature it on the home page -> set "featured: true"
+// ============================================================
+
+const products = [
+  // ---------------- EARRINGS ----------------
+  {
+    id: 1,
+    name: "Pearl Drop Earrings",
+    category: "earrings",
+    price: 199,
+    oldPrice: 249,
+    image: "https://placehold.co/600x600/f4c9d6/2b1f2e?text=Pearl+Drop+Earrings",
+    description: "Elegant pearl drop earrings suitable for casual and festive looks.",
+    featured: true,
+    available: true
+  },
+  {
+    id: 2,
+    name: "Oxidised Jhumka Earrings",
+    category: "earrings",
+    price: 179,
+    oldPrice: 229,
+    image: "https://placehold.co/600x600/f4c9d6/2b1f2e?text=Jhumka+Earrings",
+    description: "Classic oxidised jhumkas that pair well with ethnic and fusion wear.",
+    featured: true,
+    available: true
+  },
+  {
+    id: 3,
+    name: "Minimal Gold-Tone Studs",
+    category: "earrings",
+    price: 149,
+    oldPrice: null,
+    image: "https://placehold.co/600x600/f4c9d6/2b1f2e?text=Gold+Tone+Studs",
+    description: "Everyday studs with a subtle gold-tone finish.",
+    featured: false,
+    available: true
+  },
+
+  // ---------------- ACCESSORIES ----------------
+  {
+    id: 4,
+    name: "Satin Scrunchie Set (Pack of 3)",
+    category: "accessories",
+    price: 129,
+    oldPrice: 169,
+    image: "https://placehold.co/600x600/e6d5f7/2b1f2e?text=Scrunchie+Set",
+    description: "Soft satin scrunchies in three shades — gentle on hair.",
+    featured: true,
+    available: true
+  },
+  {
+    id: 5,
+    name: "Layered Bangle Set",
+    category: "accessories",
+    price: 249,
+    oldPrice: 299,
+    image: "https://placehold.co/600x600/e6d5f7/2b1f2e?text=Bangle+Set",
+    description: "A stackable set of bangles that go with both casual and festive outfits.",
+    featured: false,
+    available: true
+  },
+  {
+    id: 6,
+    name: "Pearl Hair Clip Set",
+    category: "accessories",
+    price: 99,
+    oldPrice: null,
+    image: "https://placehold.co/600x600/e6d5f7/2b1f2e?text=Hair+Clip+Set",
+    description: "Cute pearl-studded hair clips, sold as a set of 4.",
+    featured: true,
+    available: true
+  },
+
+  // ---------------- COMBO SETS ----------------
+  {
+    id: 7,
+    name: "Cute Accessories Combo",
+    category: "combos",
+    price: 349,
+    oldPrice: 449,
+    image: "https://placehold.co/600x600/ffe3b3/2b1f2e?text=Accessories+Combo",
+    description: "1 pair of earrings + 1 scrunchie + 1 hair clip set, bundled together.",
+    featured: true,
+    available: true
+  },
+  {
+    id: 8,
+    name: "College Girl Combo",
+    category: "combos",
+    price: 399,
+    oldPrice: 529,
+    image: "https://placehold.co/600x600/ffe3b3/2b1f2e?text=College+Girl+Combo",
+    description: "2 pairs of earrings + 1 keychain, perfect for everyday college wear.",
+    featured: true,
+    available: true
+  },
+  {
+    id: 9,
+    name: "Mini Gift Combo",
+    category: "combos",
+    price: 299,
+    oldPrice: 379,
+    image: "https://placehold.co/600x600/ffe3b3/2b1f2e?text=Mini+Gift+Combo",
+    description: "A small gifting combo — earrings, keychain and a hair clip, gift-ready.",
+    featured: false,
+    available: true
+  },
+
+  // ---------------- CRAFT SETS ----------------
+  {
+    id: 10,
+    name: "DIY Jewelry Making Kit",
+    category: "craft",
+    price: 349,
+    oldPrice: 399,
+    image: "https://placehold.co/600x600/c9e4de/2b1f2e?text=Jewelry+Making+Kit",
+    description: "Beads, threads and tools to design your own earrings and bracelets.",
+    featured: true,
+    available: true
+  },
+  {
+    id: 11,
+    name: "Resin Art Starter Kit",
+    category: "craft",
+    price: 449,
+    oldPrice: null,
+    image: "https://placehold.co/600x600/c9e4de/2b1f2e?text=Resin+Art+Kit",
+    description: "Everything you need to try resin art at home for the first time.",
+    featured: false,
+    available: true
+  },
+  {
+    id: 12,
+    name: "Embroidery Practice Kit",
+    category: "craft",
+    price: 299,
+    oldPrice: 349,
+    image: "https://placehold.co/600x600/c9e4de/2b1f2e?text=Embroidery+Kit",
+    description: "A beginner-friendly embroidery kit with hoop, thread and patterns.",
+    featured: false,
+    available: true
+  },
+
+  // ---------------- KEYCHAINS ----------------
+  {
+    id: 13,
+    name: "Cute Plush Keychain",
+    category: "keychains",
+    price: 79,
+    oldPrice: 99,
+    image: "https://placehold.co/600x600/cfe0f7/2b1f2e?text=Plush+Keychain",
+    description: "A soft plush keychain, great for bags and gifting.",
+    featured: true,
+    available: true
+  },
+  {
+    id: 14,
+    name: "Metal Initial Keychain",
+    category: "keychains",
+    price: 89,
+    oldPrice: null,
+    image: "https://placehold.co/600x600/cfe0f7/2b1f2e?text=Initial+Keychain",
+    description: "A simple metal keychain with your initial.",
+    featured: false,
+    available: true
+  },
+  {
+    id: 15,
+    name: "Beaded Charm Keychain",
+    category: "keychains",
+    price: 99,
+    oldPrice: 129,
+    image: "https://placehold.co/600x600/cfe0f7/2b1f2e?text=Beaded+Keychain",
+    description: "A handmade-look beaded charm keychain.",
+    featured: true,
+    available: true
+  }
+];
+
+
+// ============================================================
+// E-KART — app logic (vanilla JS, no build step required)
+// ============================================================
+
+const state = {
+  activeCategory: "all",
+  searchTerm: "",
+  sortBy: "default",
+  cart: JSON.parse(localStorage.getItem("ekart_cart") || "[]")
+};
+
+// ---------------- Helpers ----------------
+function formatPrice(n){ return "₹" + n.toLocaleString("en-IN"); }
+function findProduct(id){ return products.find(p => p.id === id); }
+function saveCart(){ localStorage.setItem("ekart_cart", JSON.stringify(state.cart)); }
+function waLink(number, text){ return `https://wa.me/${number}?text=${encodeURIComponent(text)}`; }
+
+function showToast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+// ---------------- Footer / static links (from config) ----------------
+function initStaticLinks(){
+  document.getElementById("footerWhatsapp").href = waLink(storeConfig.whatsappNumber, "Hi E-Kart, I have a question about your products.");
+  document.getElementById("footerWhatsappNum").textContent = "WhatsApp: +" + storeConfig.whatsappNumber;
+  document.getElementById("footerEmail").href = "mailto:" + storeConfig.email;
+  document.getElementById("footerEmailText").textContent = storeConfig.email;
+  document.getElementById("footerInstagram").href = "https://instagram.com/" + storeConfig.instagram;
+  document.getElementById("footerInstagram").textContent = "Instagram: @" + storeConfig.instagram;
+  document.getElementById("whatsappFloat").href = waLink(storeConfig.whatsappNumber, "Hi E-Kart, I'm interested in your products.");
+}
+
+// ---------------- Categories (bento grid) ----------------
+function renderCategories(){
+  const grid = document.getElementById("catGrid");
+  grid.innerHTML = categories.map(c => `
+    <a href="#shop" class="cat-card cat-${c.id}" data-cat="${c.id}">
+      <span class="cat-emoji">${c.emoji}</span>
+      <h3>${c.name}</h3>
+      <p>${c.description}</p>
+      <span class="cat-link">Explore →</span>
+    </a>
+  `).join("");
+}
+
+// ---------------- Shop filter chips ----------------
+function renderChips(){
+  const row = document.getElementById("chipRow");
+  const all = [{id:"all", name:"All"}, ...categories];
+  row.innerHTML = all.map(c => `
+    <button class="chip ${state.activeCategory === c.id ? "active" : ""}" data-cat="${c.id}">${c.name}</button>
+  `).join("");
+  row.querySelectorAll(".chip").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.activeCategory = btn.dataset.cat;
+      updateShopTitle();
+      renderChips();
+      renderProducts();
+    });
+  });
+}
+
+function updateShopTitle(){
+  const title = document.getElementById("shopTitle");
+  if (state.activeCategory === "all") { title.textContent = "All products"; return; }
+  const cat = categories.find(c => c.id === state.activeCategory);
+  title.textContent = cat ? cat.name : "All products";
+}
+
+// ---------------- Product grid ----------------
+function getFilteredProducts(){
+  let list = products.slice();
+  if (state.activeCategory !== "all") list = list.filter(p => p.category === state.activeCategory);
+  if (state.searchTerm.trim()) {
+    const q = state.searchTerm.trim().toLowerCase();
+    list = list.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.description.toLowerCase().includes(q));
+  }
+  if (state.sortBy === "low-high") list.sort((a,b) => a.price - b.price);
+  if (state.sortBy === "high-low") list.sort((a,b) => b.price - a.price);
+  if (state.sortBy === "newest") list.sort((a,b) => b.id - a.id);
+  return list;
+}
+
+function renderProducts(){
+  const grid = document.getElementById("productGrid");
+  const list = getFilteredProducts();
+
+  if (list.length === 0){
+    grid.innerHTML = `<p style="grid-column:1/-1; color:var(--ink-faint); text-align:center; padding:40px 0;">No products found. Try a different search or category.</p>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(p => {
+    const discount = p.oldPrice ? Math.round(100 - (p.price / p.oldPrice) * 100) : null;
+    const isCombo = p.category === "combos";
+    return `
+    <div class="product-card" data-id="${p.id}">
+      <div class="product-media" data-open-product="${p.id}">
+        <img src="${p.image}" alt="${p.name}">
+        ${discount ? `<span class="badge-discount">${discount}% OFF</span>` : ""}
+        ${isCombo && p.oldPrice ? `<span class="combo-save">Save ${formatPrice(p.oldPrice - p.price)}</span>` : ""}
+        ${!p.available ? `<div class="badge-soldout">Sold out</div>` : ""}
+      </div>
+      <div class="product-info">
+        <h3 data-open-product="${p.id}">${p.name}</h3>
+        <p class="desc">${p.description}</p>
+        <div class="price-row">
+          <span class="price-now">${formatPrice(p.price)}</span>
+          ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ""}
+        </div>
+        <div class="product-actions">
+          <button class="btn btn-outline" data-open-product="${p.id}">View</button>
+          <button class="btn btn-primary" data-buy-now="${p.id}" ${!p.available ? "disabled" : ""}>Buy Now</button>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+// ---------------- Cart ----------------
+function addToCart(id, qty = 1){
+  const existing = state.cart.find(i => i.id === id);
+  if (existing) existing.qty += qty;
+  else state.cart.push({ id, qty });
+  saveCart();
+  renderCartCount();
+  showToast("Added to cart");
+}
+
+function removeFromCart(id){
+  state.cart = state.cart.filter(i => i.id !== id);
+  saveCart();
+  renderCartCount();
+  renderCartDrawer();
+}
+
+function changeQty(id, delta){
+  const item = state.cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) return removeFromCart(id);
+  saveCart();
+  renderCartCount();
+  renderCartDrawer();
+}
+
+function cartTotals(){
+  let subtotal = 0;
+  state.cart.forEach(i => {
+    const p = findProduct(i.id);
+    if (p) subtotal += p.price * i.qty;
+  });
+  const shipping = subtotal === 0 ? 0 : (subtotal >= storeConfig.freeShippingAbove ? 0 : storeConfig.shippingFee);
+  return { subtotal, shipping, total: subtotal + shipping };
+}
+
+function renderCartCount(){
+  const count = state.cart.reduce((sum, i) => sum + i.qty, 0);
+  document.getElementById("cartCount").textContent = count;
+}
+
+function renderCartDrawer(){
+  const body = document.getElementById("cartBody");
+  const footer = document.getElementById("cartFooter");
+
+  if (state.cart.length === 0){
+    body.innerHTML = `<p class="cart-empty">Your cart is empty.</p>`;
+    footer.innerHTML = "";
+    return;
+  }
+
+  body.innerHTML = state.cart.map(item => {
+    const p = findProduct(item.id);
+    if (!p) return "";
+    return `
+    <div class="cart-item">
+      <img src="${p.image}" alt="${p.name}">
+      <div class="cart-item-info">
+        <h4>${p.name}</h4>
+        <div class="price-row"><span class="price-now">${formatPrice(p.price * item.qty)}</span></div>
+        <div class="qty-control">
+          <button data-qty-minus="${p.id}">−</button>
+          <span>${item.qty}</span>
+          <button data-qty-plus="${p.id}">+</button>
+        </div>
+        <button class="remove-link" data-remove="${p.id}">Remove</button>
+      </div>
+    </div>`;
+  }).join("");
+
+  const t = cartTotals();
+  footer.innerHTML = `
+    <div class="summary-row"><span>Subtotal</span><span>${formatPrice(t.subtotal)}</span></div>
+    <div class="summary-row"><span>Shipping</span><span>${t.shipping === 0 ? "Free" : formatPrice(t.shipping)}</span></div>
+    <div class="summary-row total"><span>Total</span><span>${formatPrice(t.total)}</span></div>
+    <button class="btn btn-primary btn-block" id="cartCheckoutBtn" style="margin-top:14px;">Checkout</button>
+  `;
+
+  body.querySelectorAll("[data-qty-minus]").forEach(b => b.addEventListener("click", () => changeQty(parseInt(b.dataset.qtyMinus), -1)));
+  body.querySelectorAll("[data-qty-plus]").forEach(b => b.addEventListener("click", () => changeQty(parseInt(b.dataset.qtyPlus), 1)));
+  body.querySelectorAll("[data-remove]").forEach(b => b.addEventListener("click", () => removeFromCart(parseInt(b.dataset.remove))));
+
+  const checkoutBtn = document.getElementById("cartCheckoutBtn");
+  if (checkoutBtn) checkoutBtn.addEventListener("click", () => {
+    closeDrawer();
+    openCheckoutModal(null); // null = checkout whole cart
+  });
+}
+
+function openDrawer(){
+  document.getElementById("overlay").classList.add("show");
+  document.getElementById("cartDrawer").classList.add("show");
+  renderCartDrawer();
+}
+function closeDrawer(){
+  document.getElementById("overlay").classList.remove("show");
+  document.getElementById("cartDrawer").classList.remove("show");
+}
+
+// ---------------- Product modal ----------------
+function openProductModal(id){
+  const p = findProduct(id);
+  if (!p) return;
+  const box = document.getElementById("productModalBox");
+  box.innerHTML = `
+    <button class="modal-close" data-close="productModal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="pd-grid">
+      <div class="pd-image"><img src="${p.image}" alt="${p.name}"></div>
+      <div class="pd-info">
+        <h2>${p.name}</h2>
+        <div class="price-row">
+          <span class="price-now">${formatPrice(p.price)}</span>
+          ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ""}
+        </div>
+        <p class="desc">${p.description}</p>
+        <p class="pd-avail ${p.available ? "in" : "out"}">${p.available ? "In stock" : "Currently sold out"}</p>
+        <div class="qty-control">
+          <button id="pdQtyMinus">−</button>
+          <span id="pdQty">1</span>
+          <button id="pdQtyPlus">+</button>
+        </div>
+        <div class="hero-cta" style="margin-top:16px;">
+          <button class="btn btn-outline" id="pdAddCart" ${!p.available ? "disabled" : ""}>Add to Cart</button>
+          <button class="btn btn-primary" id="pdBuyNow" ${!p.available ? "disabled" : ""}>Buy Now</button>
+        </div>
+        <div class="pd-trust">
+          <span>🔒 Secure Payment</span>
+          <span>✅ Quality Checked</span>
+          <span>💬 Easy Support</span>
+        </div>
+      </div>
+    </div>
+  `;
+  let qty = 1;
+  const qtyEl = box.querySelector("#pdQty");
+  box.querySelector("#pdQtyMinus").addEventListener("click", () => { if (qty > 1) qty--; qtyEl.textContent = qty; });
+  box.querySelector("#pdQtyPlus").addEventListener("click", () => { qty++; qtyEl.textContent = qty; });
+  box.querySelector("#pdAddCart").addEventListener("click", () => { addToCart(p.id, qty); closeModal("productModal"); });
+  box.querySelector("#pdBuyNow").addEventListener("click", () => {
+    closeModal("productModal");
+    openCheckoutModal({ id: p.id, qty });
+  });
+  openModal("productModal");
+}
+
+// ---------------- Checkout modal ----------------
+// buyNowItem = {id, qty} for a single Buy Now, or null to checkout the whole cart
+function openCheckoutModal(buyNowItem){
+  const box = document.getElementById("checkoutModalBox");
+  const items = buyNowItem ? [buyNowItem] : state.cart;
+
+  if (items.length === 0){
+    showToast("Your cart is empty");
+    return;
+  }
+
+  let subtotal = 0;
+  const lineItemsHtml = items.map(i => {
+    const p = findProduct(i.id);
+    subtotal += p.price * i.qty;
+    return `<div class="summary-row"><span>${p.name} × ${i.qty}</span><span>${formatPrice(p.price * i.qty)}</span></div>`;
+  }).join("");
+  const shipping = subtotal >= storeConfig.freeShippingAbove ? 0 : storeConfig.shippingFee;
+  const total = subtotal + shipping;
+
+  box.innerHTML = `
+    <button class="modal-close" data-close="checkoutModal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <form class="form-grid" id="checkoutForm">
+      <h2>Checkout</h2>
+      <div class="form-field full"><label>Full Name</label><input type="text" name="fullName" required></div>
+      <div class="form-field"><label>Phone Number</label><input type="tel" name="phone" required></div>
+      <div class="form-field"><label>Email (optional)</label><input type="email" name="email"></div>
+      <div class="form-field full"><label>Full Address</label><input type="text" name="address" required></div>
+      <div class="form-field"><label>City</label><input type="text" name="city" required></div>
+      <div class="form-field"><label>State</label><input type="text" name="state" required></div>
+      <div class="form-field"><label>PIN Code</label><input type="text" name="pincode" required></div>
+      <div class="form-field full"><label>Order Notes (optional)</label><textarea name="notes"></textarea></div>
+
+      <div class="order-summary">
+        ${lineItemsHtml}
+        <div class="summary-row"><span>Shipping</span><span>${shipping === 0 ? "Free" : formatPrice(shipping)}</span></div>
+        <div class="summary-row total"><span>Total</span><span>${formatPrice(total)}</span></div>
+      </div>
+
+      <div class="pay-note">
+        ${paymentConfig.enabled
+          ? `Pay via UPI: ${paymentConfig.upiId}`
+          : `Pay via UPI — UPI ID: Coming soon. For now, place your order and pay via WhatsApp/COD as confirmed by E-Kart.`}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Place Order</button>
+    </form>
+  `;
+
+  box.querySelector("#checkoutForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const order = Object.fromEntries(fd.entries());
+    submitOrder(order, items, { subtotal, shipping, total });
+  });
+
+  openModal("checkoutModal");
+}
+
+function submitOrder(order, items, totals){
+  const orderNumber = "EK" + Date.now().toString().slice(-8);
+
+  // Build WhatsApp message with full order details
+  const lines = [
+    `New Order — ${orderNumber}`,
+    `Name: ${order.fullName}`,
+    `Phone: ${order.phone}`,
+    order.email ? `Email: ${order.email}` : null,
+    `Address: ${order.address}, ${order.city}, ${order.state} - ${order.pincode}`,
+    "",
+    "Items:",
+    ...items.map(i => { const p = findProduct(i.id); return `- ${p.name} × ${i.qty} = ${formatPrice(p.price * i.qty)}`; }),
+    "",
+    `Shipping: ${totals.shipping === 0 ? "Free" : formatPrice(totals.shipping)}`,
+    `Total: ${formatPrice(totals.total)}`,
+    order.notes ? `Notes: ${order.notes}` : null
+  ].filter(Boolean).join("
+");
+
+  const link = waLink(storeConfig.whatsappNumber, lines);
+
+  // Clear cart only if this was a full-cart checkout
+  if (items === state.cart){
+    state.cart = [];
+    saveCart();
+    renderCartCount();
+  }
+
+  showOrderConfirmation(orderNumber, items, totals, link);
+}
+
+function showOrderConfirmation(orderNumber, items, totals, whatsappLink){
+  const box = document.getElementById("checkoutModalBox");
+  const itemsHtml = items.map(i => {
+    const p = findProduct(i.id);
+    return `<div class="summary-row"><span>${p.name} × ${i.qty}</span><span>${formatPrice(p.price * i.qty)}</span></div>`;
+  }).join("");
+
+  box.innerHTML = `
+    <button class="modal-close" data-close="checkoutModal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="confirm-box">
+      <div class="confirm-emoji">🎉</div>
+      <h2>Order Request Received</h2>
+      <p>Order number: <strong>${orderNumber}</strong></p>
+      <div class="confirm-details">
+        ${itemsHtml}
+        <div class="summary-row"><span>Shipping</span><span>${totals.shipping === 0 ? "Free" : formatPrice(totals.shipping)}</span></div>
+        <div class="summary-row total"><span>Total</span><span>${formatPrice(totals.total)}</span></div>
+      </div>
+      <p>Next step: send us your order on WhatsApp so we can confirm availability and delivery. Nothing is charged yet — this is a request, not a payment confirmation.</p>
+      <div class="confirm-actions" style="margin-top:18px;">
+        <a class="btn btn-primary" href="${whatsappLink}" target="_blank">Confirm on WhatsApp</a>
+        <button class="btn btn-outline" data-close="checkoutModal">Continue Shopping</button>
+      </div>
+    </div>
+  `;
+}
+
+// ---------------- Modal open/close ----------------
+function openModal(id){ document.getElementById(id).classList.add("show"); }
+function closeModal(id){ document.getElementById(id).classList.remove("show"); }
+
+// ---------------- Event wiring ----------------
+function wireEvents(){
+  // cart drawer
+  document.getElementById("cartBtn").addEventListener("click", openDrawer);
+  document.getElementById("closeCart").addEventListener("click", closeDrawer);
+  document.getElementById("overlay").addEventListener("click", closeDrawer);
+
+  // modal close (delegated)
+  document.querySelectorAll("[data-close]").forEach(el => {
+    el.addEventListener("click", () => closeModal(el.dataset.close));
+  });
+
+  // category nav links (navbar + footer + hero buttons)
+  document.querySelectorAll("[data-cat]").forEach(el => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      state.activeCategory = el.dataset.cat;
+      updateShopTitle();
+      renderChips();
+      renderProducts();
+      document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // category bento cards (delegated, since rendered dynamically)
+  document.getElementById("catGrid").addEventListener("click", (e) => {
+    const card = e.target.closest("[data-cat]");
+    if (!card) return;
+    e.preventDefault();
+    state.activeCategory = card.dataset.cat;
+    updateShopTitle();
+    renderChips();
+    renderProducts();
+    document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+  });
+
+  // product grid delegated events
+  document.getElementById("productGrid").addEventListener("click", (e) => {
+    const openBtn = e.target.closest("[data-open-product]");
+    if (openBtn) return openProductModal(parseInt(openBtn.dataset.openProduct));
+    const buyBtn = e.target.closest("[data-buy-now]");
+    if (buyBtn) return openCheckoutModal({ id: parseInt(buyBtn.dataset.buyNow), qty: 1 });
+  });
+
+  // search
+  document.getElementById("searchInput").addEventListener("input", (e) => {
+    state.searchTerm = e.target.value;
+    renderProducts();
+  });
+
+  // sort
+  document.getElementById("sortSelect").addEventListener("change", (e) => {
+    state.sortBy = e.target.value;
+    renderProducts();
+  });
+
+  // hamburger -> simple: scroll to shop / toggle nav links visibility on mobile
+  document.getElementById("hamburgerBtn").addEventListener("click", () => {
+    const links = document.querySelector(".nav-links");
+    links.style.display = links.style.display === "flex" ? "none" : "flex";
+    links.style.cssText += "position:absolute; top:64px; left:0; right:0; background:var(--surface); flex-direction:column; padding:16px 24px; gap:16px; border-bottom:1px solid var(--line);";
+  });
+}
+
+// ---------------- Init ----------------
+function init(){
+  initStaticLinks();
+  renderCategories();
+  renderChips();
+  renderProducts();
+  renderCartCount();
+  wireEvents();
+}
+
+document.addEventListener("DOMContentLoaded", init);
+
+</script>
+</body>
+</html>
